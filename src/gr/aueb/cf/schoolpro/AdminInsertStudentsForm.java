@@ -136,7 +136,7 @@ public class AdminInsertStudentsForm extends JFrame {
 				
 			    try (Connection connection = DBUtil.getConnection();
 			    		PreparedStatement ps = connection.prepareStatement(sql);
-			    		ResultSet rs = ps.executeQuery(sql)) {
+			    		ResultSet rs = ps.executeQuery()) {
 			    	cities = new HashMap<>();
 			    	citiesModel = new DefaultComboBoxModel<>();
 			    	
@@ -237,15 +237,15 @@ public class AdminInsertStudentsForm extends JFrame {
 				}
 				
 				if (firstname == "" || lastname == "") {
-					JOptionPane.showMessageDialog(null, "Please fill ssn / firstname / lastname", "Basic info", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Please fill firstname / lastname", "Basic info", JOptionPane.ERROR_MESSAGE);
 					return;
 				}
 				
 				PreparedStatement ps = null;
-				try {
+				try (Connection conn = DBUtil.getConnection();) {
 					String sql = "INSERT INTO STUDENTS (FIRSTNAME, LASTNAME, GENDER, BIRTH_DATE, CITY_ID, USER_ID) " +
 								"VALUES(?, ?, ?, ?, ?, ?)";
-					Connection conn = Login.getConnection();
+					
 					ps = conn.prepareStatement(sql);
 					ps.setString(1, firstname);
 					ps.setString(2,  lastname);
@@ -267,9 +267,9 @@ public class AdminInsertStudentsForm extends JFrame {
 				
 //				System.out.println(ssnTxt.getText());
 //				System.out.println(firstnameTxt.getText());
-				System.out.println(lastnameTxt.getText());
-				System.out.println(buttonGroup.getSelection().getActionCommand());
-				System.out.println(birthDateTxt.getText());
+//				System.out.println(lastnameTxt.getText());
+//				System.out.println(buttonGroup.getSelection().getActionCommand());
+//				System.out.println(birthDateTxt.getText());
 //				System.out.println(cityComboBox.getSelectedItem() + ", id: " + cities.get(cityComboBox.getSelectedItem()));
 //				System.out.println(usernameComboBox.getSelectedItem() + ", id: " + usernames.get(usernameComboBox.getSelectedItem()));
 			}

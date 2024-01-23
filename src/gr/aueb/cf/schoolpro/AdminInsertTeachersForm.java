@@ -116,7 +116,7 @@ public class AdminInsertTeachersForm extends JFrame {
 				
 			    try (Connection connection = DBUtil.getConnection();
 			    		PreparedStatement ps = connection.prepareStatement(sql);
-			    		ResultSet rs = ps.executeQuery(sql)) {
+			    		ResultSet rs = ps.executeQuery()) {
 			    	cities = new HashMap<>();
 			    	model = new DefaultComboBoxModel<>();
 			    	

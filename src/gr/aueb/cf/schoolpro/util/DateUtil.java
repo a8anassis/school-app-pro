@@ -8,10 +8,10 @@ import java.util.Date;
 public class DateUtil {
 	
 	private static ThreadLocal<DateFormat> dateFormat = new ThreadLocal<DateFormat>() {
-		@Override
-		public DateFormat get() {
-			return super.get();
-		}
+//		@Override
+//		public DateFormat get() {
+//			return super.get();
+//		}
 
 		@Override
 		protected DateFormat initialValue() {

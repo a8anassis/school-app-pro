@@ -91,7 +91,7 @@ public class AdminUpdateDeleteStudentsForm extends JFrame {
 			    try {
 			    	String sqlCities = "SELECT * FROM CITIES";
 			    	psCities = conn.prepareStatement(sqlCities);
-		    		rsCities = psCities.executeQuery(sqlCities);
+		    		rsCities = psCities.executeQuery();
 			    	cities = new HashMap<>();
 			    	citiesModel = new DefaultComboBoxModel<>();
 			    	
